@@ -1,0 +1,10 @@
+{
+  "description": "Streamline document sharing and collaboration for teams, enhancing productivity and ensuring seamless access to important files in real-time.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
