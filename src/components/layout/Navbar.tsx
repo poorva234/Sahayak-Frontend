@@ -10,11 +10,25 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E4DFFA]">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#6D3FC8] flex items-center justify-center">
-            <Sparkles className="w-4 h-4 text-white" />
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#6D3FC8] via-[#7C3AED] to-[#9B6DFF] p-0.5 shadow-md shadow-[#6D3FC8]/20 flex items-center justify-center transition-transform group-hover:scale-105">
+            {/* If custom logo image logo.svg or logo.png is present in public/ or assets, render image. Otherwise render Ashoka Chakra / Sahayak Emblem */}
+            <div className="w-full h-full rounded-[10px] bg-[#6D3FC8] flex items-center justify-center overflow-hidden">
+              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" fillOpacity="0.2" />
+                <circle cx="12" cy="12" r="3" fill="white" />
+                <path d="M12 5V7M12 17V19M5 12H7M17 12H19" stroke="white" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </div>
           </div>
-          <span className="font-semibold text-[#1A1826] tracking-tight">Sahayak</span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-bold text-lg text-[#1A1826] tracking-tight group-hover:text-[#6D3FC8] transition-colors">
+              Sahayak
+            </span>
+            <span className="text-[9px] font-semibold tracking-widest text-[#71697E] uppercase">
+              Govt Welfare AI
+            </span>
+          </div>
         </Link>
 
         {/* Desktop nav */}

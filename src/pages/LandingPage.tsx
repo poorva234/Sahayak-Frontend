@@ -13,6 +13,7 @@ import {
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import SchemeCard from "../components/schemes/SchemeCard";
+import GovernmentSchemesNetwork from "../components/landing/GovernmentSchemesNetwork";
 import { mockSchemes } from "../lib/mockData";
 
 const steps = [
@@ -58,29 +59,31 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#EDE9FE] rounded-full text-sm text-[#6D3FC8] font-medium mb-6"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#EDE9FE] border border-[#DDD6FE] rounded-full text-xs sm:text-sm text-[#6D3FC8] font-semibold mb-6 shadow-sm"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              AI-powered · Citizen-centric · Secure
+              <Sparkles className="w-4 h-4 text-[#7C3AED]" />
+              ✦ AI-Centric · Government Document Processing & Scheme Matching
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="font-serif text-5xl lg:text-6xl text-[#1A1826] leading-tight mb-6"
+              className="font-serif text-5xl lg:text-6xl text-[#1A1826] leading-[1.15] mb-6"
             >
-              Discover the Benefits{" "}
-              <span className="text-[#6D3FC8]">You're Eligible For.</span>
+              Discover, Verify & Apply For Benefits{" "}
+              <span className="text-[#6D3FC8] underline decoration-[#DDD6FE] underline-offset-8">
+                You're Eligible For.
+              </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-lg text-[#71697E] leading-relaxed mb-8 max-w-lg"
+              className="text-lg text-[#71697E] leading-relaxed mb-8 max-w-xl"
             >
-              Sahayak intelligently connects your profile with public welfare schemes and guides you through the entire application journey.
+              Sahayak intelligently processes government documents, connects your citizen profile with central & state public welfare schemes, and guides you through the entire application journey.
             </motion.p>
 
             <motion.div
@@ -91,15 +94,15 @@ export default function LandingPage() {
             >
               <button
                 onClick={() => navigate("/register")}
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-[#6D3FC8] text-white rounded-xl font-medium hover:bg-[#5a33a8] transition-colors shadow-lg shadow-[#6D3FC8]/20"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 bg-[#6D3FC8] text-white rounded-xl font-medium hover:bg-[#5a33a8] transition-all shadow-lg shadow-[#6D3FC8]/25 hover:shadow-xl hover:shadow-[#6D3FC8]/35 hover:-translate-y-0.5"
               >
                 Check My Eligibility <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={() => navigate("/schemes")}
-                className="flex items-center justify-center gap-2 px-6 py-3 border border-[#DDD6FE] text-[#6D3FC8] rounded-xl font-medium hover:bg-[#EDE9FE] transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 border border-[#DDD6FE] text-[#6D3FC8] rounded-xl font-medium hover:bg-[#EDE9FE] transition-colors bg-white shadow-sm"
               >
-                Explore Schemes
+                Explore Schemes & Depts
               </button>
             </motion.div>
 
@@ -107,59 +110,25 @@ export default function LandingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="flex items-center gap-6 mt-10"
+              className="flex items-center gap-8 mt-10 pt-6 border-t border-[#E4DFFA]/60"
             >
               {stats.map((s, i) => (
-                <div key={i} className="text-center">
-                  <p className="text-xl font-bold text-[#1A1826] font-serif">{s.value}</p>
-                  <p className="text-xs text-[#71697E]">{s.label}</p>
+                <div key={i} className="text-left">
+                  <p className="text-2xl font-bold text-[#1A1826] font-serif">{s.value}</p>
+                  <p className="text-xs text-[#71697E] font-medium">{s.label}</p>
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* Hero visual — floating network */}
+          {/* Hero visual — Dynamic Indian Government Schemes Network */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="relative h-[480px] hidden lg:flex items-center justify-center"
+            className="w-full hidden lg:block"
           >
-            {/* Central orb */}
-            <div className="absolute w-40 h-40 rounded-full bg-gradient-to-br from-[#6D3FC8] to-[#9B6DFF] shadow-2xl shadow-[#6D3FC8]/30 flex items-center justify-center z-10">
-              <Sparkles className="w-12 h-12 text-white/90" />
-              <div className="absolute inset-0 rounded-full bg-[#6D3FC8]/10 animate-ping" />
-            </div>
-
-            {/* Floating cards */}
-            {[
-              { label: "Your Profile", sub: "Age · Income · Category", top: "5%", left: "0%" },
-              { label: "AI Analysis", sub: "100+ scheme rules", top: "5%", right: "0%" },
-              { label: "Eligibility", sub: "94% match found", bottom: "20%", left: "0%" },
-              { label: "Apply", sub: "Guided assistance", bottom: "20%", right: "0%" },
-            ].map((card, i) => (
-              <motion.div
-                key={i}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                className="absolute bg-white border border-[#E4DFFA] rounded-xl px-4 py-3 shadow-lg shadow-[#6D3FC8]/8 w-40"
-                style={{ top: card.top, left: card.left, right: card.right, bottom: card.bottom }}
-              >
-                <p className="text-xs font-semibold text-[#1A1826]">{card.label}</p>
-                <p className="text-[10px] text-[#71697E] mt-0.5">{card.sub}</p>
-                <div className="mt-2 h-1 bg-[#E4DFFA] rounded-full overflow-hidden">
-                  <div className="h-full bg-[#6D3FC8] rounded-full" style={{ width: `${65 + i * 10}%` }} />
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Connecting lines (decorative) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
-              <line x1="175" y1="95" x2="260" y2="215" stroke="#DDD6FE" strokeWidth="1.5" strokeDasharray="4 4" />
-              <line x1="325" y1="95" x2="260" y2="215" stroke="#DDD6FE" strokeWidth="1.5" strokeDasharray="4 4" />
-              <line x1="175" y1="335" x2="260" y2="265" stroke="#DDD6FE" strokeWidth="1.5" strokeDasharray="4 4" />
-              <line x1="325" y1="335" x2="260" y2="265" stroke="#DDD6FE" strokeWidth="1.5" strokeDasharray="4 4" />
-            </svg>
+            <GovernmentSchemesNetwork />
           </motion.div>
         </div>
       </section>
